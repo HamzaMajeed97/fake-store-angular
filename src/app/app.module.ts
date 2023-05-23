@@ -10,14 +10,25 @@ import { MaterialModule } from './material/material-module';
 import { ProductComponent } from './product/product.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { ProductlistComponent } from './productlist/productlist.component';
+import { ProductdetailsComponent } from './productdetails/productdetails.component';
+import { FormsModule } from '@angular/forms';
 @NgModule({
-  declarations: [AppComponent, HomepageComponent, NavbarComponent, ProductComponent, PagenotfoundComponent, ProductlistComponent],
+  declarations: [
+    AppComponent,
+    HomepageComponent,
+    NavbarComponent,
+    ProductComponent,
+    PagenotfoundComponent,
+    ProductlistComponent,
+    ProductdetailsComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

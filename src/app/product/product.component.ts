@@ -6,31 +6,33 @@ import { Product } from '../models/product';
   template: `
     <mat-card class="example-card">
       <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
         <mat-card-title>{{ product.title }}</mat-card-title>
-        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+        <mat-card-subtitle>{{ product.category }}</mat-card-subtitle>
       </mat-card-header>
-      <img mat-card-image [src]="product.image" alt="Photo of a Shiba Inu" />
-      <mat-card-content>
-        <p>
-          {{ product.description }}
-        </p>
-      </mat-card-content>
+      <img class="img" mat-card-image [src]="product.image" />
+      <mat-card-content> </mat-card-content>
       <mat-card-actions>
-        <button mat-button>LIKE</button>
-        <button mat-button>SHARE</button>
+        <button [routerLink]="['/products', product.id]" mat-button>
+          DETAILS
+        </button>
+        <button mat-button>ADD TO CART</button>
       </mat-card-actions>
     </mat-card>
   `,
   styles: [
     `
       .example-card {
-        max-width: 400px;
+        min-width: 300px;
+        padding: 20px;
+        margin: 2rem;
       }
 
       .example-header-image {
-        background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
         background-size: cover;
+      }
+
+      .img {
+        aspect-ratio: 8/5;
       }
     `,
   ],
@@ -41,4 +43,6 @@ export class ProductComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  goToDetails() {}
 }
