@@ -4,13 +4,12 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-homepage',
   template: `
     <p>homepage works!</p>
+    <app-user></app-user>
     <app-productlist></app-productlist>
   `,
   styles: [],
 })
 export class HomepageComponent implements OnInit {
-  products: any;
-
   constructor() {}
 
   ngOnInit(): void {}

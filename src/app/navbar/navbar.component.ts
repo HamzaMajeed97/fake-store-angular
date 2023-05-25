@@ -1,51 +1,41 @@
 import { Component, OnInit } from '@angular/core';
-
+import { CartComponent } from '../cart/cart.component';
 @Component({
   selector: 'app-navbar',
   template: `
-    <mat-sidenav-container>
-      <mat-sidenav>
-        <mat-nav-list>
-          <a mat-list-item routerLink="/"><mat-icon>home</mat-icon> Home</a>
-          <a mat-list-item routerLink="/"><mat-icon>info</mat-icon> About</a>
-          <a mat-list-item routerLink="/"><mat-icon>mail</mat-icon> Contact</a>
-        </mat-nav-list>
-      </mat-sidenav>
-      <mat-sidenav-content>
-        <mat-toolbar routerLink="/" color="primary">
-          <span>Fake Store</span>
-        </mat-toolbar>
-        <!-- Main content goes here -->
-      </mat-sidenav-content>
-    </mat-sidenav-container>
+    <section class="navbar">
+      <div>
+        <div class="logo">
+          <div routerLink="/">FAKE STORE</div>
+        </div>
+
+        <section class="cart">
+          <app-cart></app-cart>
+        </section>
+      </div>
+    </section>
   `,
   styles: [
     `
-      mat-sidenav-container {
-        height: 80px;
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1;
+        margin-bottom: 20px;
+        height: 70px;
         border: 2px solid black;
-        background-color: pink;
+        background-color: #9c27b0;
       }
 
-      mat-nav-list {
-        display: flex;
+      .logo {
+        font-size: 20px;
+        cursor: pointer;
       }
 
       mat-sidenav {
         width: 200px;
-      }
-
-      mat-toolbar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 1;
-        cursor: pointer;
-      }
-
-      mat-sidenav-content {
-        margin-top: 64px; /* adjust this value according to the toolbar height */
       }
     `,
   ],

@@ -7,6 +7,7 @@ export const environment = {
 
   PRODUCTS_URL: 'https://fakestoreapi.com/products',
   CART_URL: 'https://fakestoreapi.com/carts',
+  USERS_URL: 'https://fakestoreapi.com/users',
 };
 
 /*

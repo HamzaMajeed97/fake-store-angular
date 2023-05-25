@@ -12,6 +12,8 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { ProductlistComponent } from './productlist/productlist.component';
 import { ProductdetailsComponent } from './productdetails/productdetails.component';
 import { FormsModule } from '@angular/forms';
+import { CartComponent } from './cart/cart.component';
+import { UserComponent } from './user/user.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +23,8 @@ import { FormsModule } from '@angular/forms';
     PagenotfoundComponent,
     ProductlistComponent,
     ProductdetailsComponent,
+    CartComponent,
+    UserComponent,
   ],
   imports: [
     BrowserModule,

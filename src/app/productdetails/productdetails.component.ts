@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Product } from '../models/product';
 import { ActivatedRoute } from '@angular/router';
 import { FakeStoreCallService } from '../services/fake-store-call.service';
+import { Cart } from '../models/cart';
 
 @Component({
   selector: 'app-productdetails',
@@ -36,6 +37,7 @@ import { FakeStoreCallService } from '../services/fake-store-call.service';
 export class ProductdetailsComponent implements OnInit {
   product!: Product;
   quantity: number = 1;
+  cart: Cart[] = [];
 
   constructor(
     private route: ActivatedRoute,

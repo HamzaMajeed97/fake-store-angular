@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Product } from '../models/product';
+import { CartService } from '../services/cart.service';
+import { Cart } from '../models/cart';
 
 @Component({
   selector: 'app-product',
@@ -16,7 +18,7 @@ import { Product } from '../models/product';
           <button [routerLink]="['/product', product.id]" mat-button>
             DETAILS
           </button>
-          <button mat-button>ADD TO CART</button>
+          <button (click)="addToCart(product)" mat-button>ADD TO CART</button>
         </mat-card-actions>
       </mat-card>
     </router-outlet>
@@ -42,9 +44,13 @@ import { Product } from '../models/product';
 export class ProductComponent implements OnInit {
   @Input() product!: Product;
 
-  constructor() {}
+  constructor(private cartService: CartService) {}
 
   ngOnInit(): void {}
 
-  goToDetails() {}
+  addToCart(product: any) {
+    this.cartService.addToCart(product).subscribe((data) => {
+      console.log(data);
+    });
+  }
 }
