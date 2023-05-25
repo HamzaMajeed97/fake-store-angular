@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
 
-  URL: 'https://fakestoreapi.com/products',
+  PRODUCTS_URL: 'https://fakestoreapi.com/products',
+  CART_URL: 'https://fakestoreapi.com/carts',
 };
 
 /*

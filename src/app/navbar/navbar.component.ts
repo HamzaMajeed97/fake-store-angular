@@ -12,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
         </mat-nav-list>
       </mat-sidenav>
       <mat-sidenav-content>
-        <mat-toolbar color="primary">
+        <mat-toolbar routerLink="/" color="primary">
           <span>Fake Store</span>
         </mat-toolbar>
         <!-- Main content goes here -->
@@ -41,6 +41,7 @@ import { Component, OnInit } from '@angular/core';
         left: 0;
         right: 0;
         z-index: 1;
+        cursor: pointer;
       }
 
       mat-sidenav-content {

@@ -6,26 +6,17 @@ import { FakeStoreCallService } from '../services/fake-store-call.service';
 @Component({
   selector: 'app-productdetails',
   template: `
-    <div class="container">
-      <div class="row">
-        <div class="col-6">
-          <img
-            [src]="product.image"
-            alt="{{ product.title }}"
-            class="img-fluid"
-          />
+    <div class="">
+      <div class="">
+        <div class="">
+          <img src="{{ product.image }}" alt="{{ product.title }}" class="" />
         </div>
-        <div class="col-6">
+        <div class="">
           <h1>{{ product.title }}</h1>
           <p>{{ product.description }}</p>
           <p>Price: {{ product.price | currency }}</p>
           <div class="input-group mb-3">
-            <button
-              (click)="decreaseQuantity()"
-              class="btn btn-outline-secondary"
-            >
-              -
-            </button>
+            <button (click)="decreaseQuantity()">-</button>
             <input
               type="number"
               [(ngModel)]="quantity"
@@ -33,14 +24,9 @@ import { FakeStoreCallService } from '../services/fake-store-call.service';
               max="10"
               class="form-control text-center"
             />
-            <button
-              (click)="increaseQuantity()"
-              class="btn btn-outline-secondary"
-            >
-              +
-            </button>
+            <button (click)="increaseQuantity()">+</button>
           </div>
-          <button class="btn btn-primary">Add to cart</button>
+          <button mat-button color="primary">ADD TO CART</button>
         </div>
       </div>
     </div>
@@ -57,7 +43,13 @@ export class ProductdetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe((params) => {});
+    this.route.params.subscribe((params) => {
+      const id = +params['id'];
+      this.productService.getById(id).subscribe((data) => {
+        this.product = data;
+        console.log(data);
+      });
+    });
   }
 
   decreaseQuantity() {

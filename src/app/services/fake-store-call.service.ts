@@ -7,7 +7,7 @@ import { Product } from '../models/product';
   providedIn: 'root',
 })
 export class FakeStoreCallService {
-  baseUrl = environment.URL;
+  baseUrl = environment.PRODUCTS_URL;
 
   constructor(private http: HttpClient) {}
 

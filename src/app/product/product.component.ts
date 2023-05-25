@@ -4,20 +4,22 @@ import { Product } from '../models/product';
 @Component({
   selector: 'app-product',
   template: `
-    <mat-card class="example-card">
-      <mat-card-header>
-        <mat-card-title>{{ product.title }}</mat-card-title>
-        <mat-card-subtitle>{{ product.category }}</mat-card-subtitle>
-      </mat-card-header>
-      <img class="img" mat-card-image [src]="product.image" />
-      <mat-card-content> </mat-card-content>
-      <mat-card-actions>
-        <button [routerLink]="['/products', product.id]" mat-button>
-          DETAILS
-        </button>
-        <button mat-button>ADD TO CART</button>
-      </mat-card-actions>
-    </mat-card>
+    <router-outlet>
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>{{ product.title }}</mat-card-title>
+          <mat-card-subtitle>{{ product.category }}</mat-card-subtitle>
+        </mat-card-header>
+        <img class="img" mat-card-image [src]="product.image" />
+        <mat-card-content> </mat-card-content>
+        <mat-card-actions>
+          <button [routerLink]="['/product', product.id]" mat-button>
+            DETAILS
+          </button>
+          <button mat-button>ADD TO CART</button>
+        </mat-card-actions>
+      </mat-card>
+    </router-outlet>
   `,
   styles: [
     `
