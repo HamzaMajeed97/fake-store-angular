@@ -1,28 +1,41 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CartService } from '../services/cart.service';
+import { CounterService } from '../services/counter.service';
+import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-cart',
-  template: ` <div>Cart {{ quantity }}</div> `,
+    selector: 'app-cart',
+    template: ` <div>Cart {{ counter }}</div> `,
 
-  styles: [],
+    styles: [],
 })
 export class CartComponent implements OnInit {
-  quantity = 0;
+    counter = 0;
 
-  constructor(private cartService: CartService) {}
+    counterSubscription!: Subscription;
 
-  ngOnInit(): void {
-    this.getCart();
-  }
+    constructor(
+        private cartService: CartService,
+        private counterService: CounterService
+    ) {}
 
-  addToCart() {
-    this.quantity++;
-  }
+    ngOnInit(): void {
+        this.counterSubscription = this.counterService.counterChanged.subscribe(
+            (counter: number) => {
+                this.counter = counter;
+            }
+        );
+    }
 
-  getCart() {
-    this.cartService.getCart().subscribe((data) => {
-      console.log(data);
-    });
-  }
+    ngOnDestroy(): void {
+        //Called once, before the instance is destroyed.
+        //Add 'implements OnDestroy' to the class.
+        this.counterSubscription.unsubscribe();
+    }
+
+    getCart() {
+        this.cartService.getCart().subscribe((data) => {
+            console.log(data);
+        });
+    }
 }

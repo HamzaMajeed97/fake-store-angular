@@ -1,56 +1,64 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Product } from '../models/product';
 import { CartService } from '../services/cart.service';
-import { Cart } from '../models/cart';
+import { CounterService } from '../services/counter.service';
 
 @Component({
-  selector: 'app-product',
-  template: `
-    <router-outlet>
-      <mat-card class="example-card">
-        <mat-card-header>
-          <mat-card-title>{{ product.title }}</mat-card-title>
-          <mat-card-subtitle>{{ product.category }}</mat-card-subtitle>
-        </mat-card-header>
-        <img class="img" mat-card-image [src]="product.image" />
-        <mat-card-content> </mat-card-content>
-        <mat-card-actions>
-          <button [routerLink]="['/product', product.id]" mat-button>
-            DETAILS
-          </button>
-          <button (click)="addToCart(product)" mat-button>ADD TO CART</button>
-        </mat-card-actions>
-      </mat-card>
-    </router-outlet>
-  `,
-  styles: [
-    `
-      .example-card {
-        min-width: 300px;
-        padding: 20px;
-        margin: 2rem;
-      }
-
-      .example-header-image {
-        background-size: cover;
-      }
-
-      .img {
-        aspect-ratio: 8/5;
-      }
+    selector: 'app-product',
+    template: `
+        <mat-card class="example-card">
+            <mat-card-header>
+                <mat-card-title>{{ product.title }}</mat-card-title>
+                <mat-card-subtitle>{{ product.category }}</mat-card-subtitle>
+            </mat-card-header>
+            <img class="img" mat-card-image [src]="product.image" />
+            <mat-card-content> </mat-card-content>
+            <mat-card-actions>
+                <button [routerLink]="['/product', product.id]" mat-button>
+                    DETAILS
+                </button>
+                <button (click)="addToCart()" mat-button>ADD TO CART</button>
+                <button (click)="removeFromCart()" mat-button>
+                    remove from CART
+                </button>
+            </mat-card-actions>
+        </mat-card>
     `,
-  ],
+    styles: [
+        `
+            .example-card {
+                min-width: 300px;
+                padding: 20px;
+                margin: 2rem;
+            }
+
+            .example-header-image {
+                background-size: cover;
+            }
+
+            .img {
+                aspect-ratio: 8/5;
+            }
+        `,
+    ],
 })
 export class ProductComponent implements OnInit {
-  @Input() product!: Product;
+    @Input() product!: Product;
 
-  constructor(private cartService: CartService) {}
+    count = 0;
 
-  ngOnInit(): void {}
+    constructor(
+        private cartService: CartService,
+        private counterService: CounterService
+    ) {}
 
-  addToCart(product: any) {
-    this.cartService.addToCart(product).subscribe((data) => {
-      console.log(data);
-    });
-  }
+    ngOnInit(): void {}
+
+    addToCart() {
+        this.counterService.incrementCounter();
+    }
+
+    removeFromCart() {
+        this.counterService.decrementCounter();
+    }
 }
