@@ -57,7 +57,6 @@ export class ProductdetailsComponent implements OnInit {
             const id = +params['id'];
             this.productService.getById(id).subscribe((data) => {
                 this.product = data;
-                console.log(data);
             });
         });
     }

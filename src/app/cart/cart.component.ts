@@ -5,9 +5,19 @@ import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-cart',
-    template: ` <div>Cart {{ counter }}</div> `,
+    template: `
+        <div class="cartDetails" routerLink="cartdetails">
+            Cart {{ counter }}
+        </div>
+    `,
 
-    styles: [],
+    styles: [
+        `
+            .cartDetails {
+                cursor: pointer;
+            }
+        `,
+    ],
 })
 export class CartComponent implements OnInit {
     counter = 0;

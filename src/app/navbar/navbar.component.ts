@@ -24,7 +24,6 @@ import { CartComponent } from '../cart/cart.component';
                 margin-bottom: 20px;
                 height: 70px;
                 border: 2px solid black;
-                background-color: #9c27b0;
             }
 
             .logo {

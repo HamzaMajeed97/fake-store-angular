@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Product } from '../models/product';
 import { CartService } from '../services/cart.service';
 import { CounterService } from '../services/counter.service';
+import { FakeStoreCallService } from '../services/fake-store-call.service';
 
 @Component({
     selector: 'app-product',
@@ -20,6 +21,9 @@ import { CounterService } from '../services/counter.service';
                 <button (click)="addToCart()" mat-button>ADD TO CART</button>
                 <button (click)="removeFromCart()" mat-button>
                     remove from CART
+                </button>
+                <button (click)="removeProduct(product.id)" mat-button>
+                    delete product
                 </button>
             </mat-card-actions>
         </mat-card>
@@ -45,11 +49,10 @@ import { CounterService } from '../services/counter.service';
 export class ProductComponent implements OnInit {
     @Input() product!: Product;
 
-    count = 0;
-
     constructor(
         private cartService: CartService,
-        private counterService: CounterService
+        private counterService: CounterService,
+        private productService: FakeStoreCallService
     ) {}
 
     ngOnInit(): void {}
@@ -60,5 +63,12 @@ export class ProductComponent implements OnInit {
 
     removeFromCart() {
         this.counterService.decrementCounter();
+    }
+
+    removeProduct(id: number) {
+        this.productService.deleteProduct(id).subscribe((data) => {
+            console.log(data);
+            console.log('product deleted ');
+        });
     }
 }

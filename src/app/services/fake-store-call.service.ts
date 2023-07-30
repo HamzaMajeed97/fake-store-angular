@@ -4,18 +4,22 @@ import { environment } from 'src/environments/environment';
 import { Product } from '../models/product';
 
 @Injectable({
-  providedIn: 'root',
+    providedIn: 'root',
 })
 export class FakeStoreCallService {
-  baseUrl = environment.PRODUCTS_URL;
+    baseUrl = environment.PRODUCTS_URL;
 
-  constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) {}
 
-  getAll() {
-    return this.http.get<Product[]>(this.baseUrl);
-  }
+    getAll() {
+        return this.http.get<Product[]>(this.baseUrl);
+    }
 
-  getById(id: number) {
-    return this.http.get<Product>(`${this.baseUrl}/${id}`);
-  }
+    getById(id: number) {
+        return this.http.get<Product>(`${this.baseUrl}/${id}`);
+    }
+
+    deleteProduct(id: number) {
+        return this.http.delete<Product>(`${this.baseUrl}/${id}`);
+    }
 }

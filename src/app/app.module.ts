@@ -14,6 +14,7 @@ import { ProductdetailsComponent } from './productdetails/productdetails.compone
 import { FormsModule } from '@angular/forms';
 import { CartComponent } from './cart/cart.component';
 import { UserComponent } from './user/user.component';
+import { CartdetailsComponent } from './cartdetails/cartdetails.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +26,7 @@ import { UserComponent } from './user/user.component';
     ProductdetailsComponent,
     CartComponent,
     UserComponent,
+    CartdetailsComponent,
   ],
   imports: [
     BrowserModule,
