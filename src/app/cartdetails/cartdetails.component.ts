@@ -9,6 +9,7 @@ import { FakeStoreCallService } from '../services/fake-store-call.service';
             <!--- Note that these columns can be defined in any order.
       The actual rendered columns are set as a property on the row definition" -->
 
+            <mat-icon class="delete-icon">delete</mat-icon>
             <!-- Name Column -->
             <ng-container matColumnDef="product">
                 <th mat-header-cell *matHeaderCellDef>
@@ -42,6 +43,15 @@ import { FakeStoreCallService } from '../services/fake-store-call.service';
                 <td mat-cell *matCellDef="let element">{{ element.symbol }}</td>
             </ng-container>
 
+            <ng-container matColumnDef="remove">
+                <th mat-header-cell *matHeaderCellDef>
+                    {{ 'remove' | uppercase }}
+                </th>
+                <td mat-cell *matCellDef="let element">
+                    <mat-icon class="delete-icon">delete</mat-icon>
+                </td>
+            </ng-container>
+
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
         </table>
@@ -50,6 +60,12 @@ import { FakeStoreCallService } from '../services/fake-store-call.service';
         `
             table {
                 width: 100%;
+                margin-top: 2rem;
+            }
+
+            .delete-icon {
+                cursor: pointer;
+                color: red;
             }
         `,
     ],
@@ -57,7 +73,13 @@ import { FakeStoreCallService } from '../services/fake-store-call.service';
 export class CartdetailsComponent implements OnInit {
     product: Product[] = [];
 
-    displayedColumns: string[] = ['product', 'unit-price', 'quantity', 'total'];
+    displayedColumns: string[] = [
+        'product',
+        'unit-price',
+        'quantity',
+        'total',
+        'remove',
+    ];
 
     constructor(private productService: FakeStoreCallService) {}
 

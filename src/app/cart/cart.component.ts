@@ -7,7 +7,7 @@ import { Subscription } from 'rxjs';
     selector: 'app-cart',
     template: `
         <div class="cartDetails" routerLink="cartdetails">
-            Cart {{ counter }}
+            <mat-icon>shopping_cart</mat-icon>{{ counter }}
         </div>
     `,
 
@@ -15,6 +15,10 @@ import { Subscription } from 'rxjs';
         `
             .cartDetails {
                 cursor: pointer;
+                background-color: #ffc0cb;
+                border: 1px solid #d8b8b0;
+                padding: 5px 10px;
+                width: fit-content;
             }
         `,
     ],

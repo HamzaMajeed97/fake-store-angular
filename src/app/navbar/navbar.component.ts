@@ -18,11 +18,11 @@ import { CartComponent } from '../cart/cart.component';
             .navbar {
                 position: fixed;
                 top: 0;
-                left: 0;
                 width: 100%;
                 z-index: 1;
                 margin-bottom: 20px;
-                height: 70px;
+                height: 50px;
+                padding: 15px;
                 border: 2px solid black;
             }
 
